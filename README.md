@@ -1,62 +1,95 @@
----
-title: Political Bias Detector
-emoji: 📰
-colorFrom: blue
-colorTo: red
-sdk: gradio
-sdk_version: 4.0.0
-app_file: app.py
-pinned: false
----
-
 # 📰 Political Bias Detector
 
-[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/rajdeep547/political-bias-detector)
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-black)](https://github.com/rajdeep547/political-bias-detector)
 [![Python](https://img.shields.io/badge/Python-3.8+-blue)](https://www.python.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red)](https://pytorch.org/)
+[![Transformers](https://img.shields.io/badge/Transformers-4.30+-yellow)](https://huggingface.co/docs/transformers/index)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](https://github.com/rajdeep547/political-bias-detector/pulls)
 
-A fine-tuned **BERT-based** model for detecting political bias in news articles. Classifies text as **Left**, **Neutral**, or **Right** with confidence scores.
+A fine-tuned **BERT-based** machine learning model for detecting political bias in news articles. Classifies text as **Left**, **Neutral**, or **Right** with confidence scores and probability distributions.
+
+---
+
+## 📋 Table of Contents
+
+- [🌟 Features](#-features)
+- [🧠 Model Overview](#-model-overview)
+- [📊 Dataset](#-dataset)
+- [🚀 Quick Start](#-quick-start)
+- [💻 Installation](#-installation)
+- [🎯 Usage Examples](#-usage-examples)
+- [📁 Project Structure](#-project-structure)
+- [📊 Performance Metrics](#-performance-metrics)
+- [🛠️ Technologies Used](#️-technologies-used)
+- [🔧 Advanced Configuration](#-advanced-configuration)
+- [📝 License](#-license)
+- [🤝 Contributing](#-contributing)
+- [📧 Contact](#-contact)
+
+---
 
 ## 🌟 Features
 
-- 🔍 **Accurate Classification**: Fine-tuned BERT model with ~85% accuracy
-- 📊 **Confidence Scores**: See probability distribution for each prediction
-- 🚀 **Easy to Use**: Simple web interface powered by Gradio
-- 🌐 **Public API**: Deployed on Hugging Face Spaces
-- 💻 **Local Deployment**: Run on your machine with minimal setup
-
-## 🧠 Model Details
-
 | Feature | Description |
 |---------|-------------|
-| **Base Model** | BERT-base-uncased |
-| **Dataset** | TriLabel Political News (10,000 samples) |
-| **Classes** | Left, Neutral, Right |
-| **Accuracy** | ~85% |
-| **Framework** | PyTorch + Transformers |
+| 🔍 **Accurate Classification** | Fine-tuned BERT model with high accuracy |
+| 📊 **Confidence Scores** | See probability distribution for each prediction |
+| 🚀 **Easy to Use** | Simple web interface powered by Gradio |
+| 💻 **Local Deployment** | Run on your machine with minimal setup |
+| 📦 **Batch Processing** | Process multiple articles at once |
+| 🔄 **Real-time Analysis** | Instant predictions with detailed breakdown |
 
-### Dataset Distribution
-| Class | Samples |
-|-------|---------|
-| Left | ~3,300 |
-| Neutral | ~3,300 |
-| Right | ~3,400 |
+---
 
-## 🚀 Live Demo
+## 🧠 Model Overview
 
-Try the model right now without installing anything:
+### Model Architecture
+- **Base Model**: BERT-base-uncased (110M parameters)
+- **Fine-tuning**: Custom training on political news dataset
+- **Task**: Multi-class text classification (3 classes)
 
-**[👉 Click here for Live Demo](https://huggingface.co/spaces/rajdeep547/political-bias-detector)**
+### Why BERT?
+BERT's bidirectional attention mechanism captures context better than traditional models, making it ideal for understanding nuanced political language.
 
-## 💻 Installation
+| Aspect | Details |
+|--------|---------|
+| **Input Length** | Up to 512 tokens |
+| **Embedding Size** | 768 dimensions |
+| **Layers** | 12 transformer layers |
+| **Attention Heads** | 12 attention heads |
 
-### Prerequisites
-- Python 3.8 or higher
-- pip (Python package manager)
-- Git (optional, for cloning)
+---
 
-### Step 1: Clone the Repository
+## 📊 Dataset
+
+The model is fine-tuned on the **TriLabel Political News Dataset** from Kaggle:
+
+| Split | Samples | Classes |
+|-------|---------|---------|
+| **Training** | 10,000 | Left, Neutral, Right |
+| **Testing** | 1,000 | Left, Neutral, Right |
+
+### Class Distribution
+| Class | Training Samples | Percentage |
+|-------|------------------|------------|
+| Left | ~3,300 | 33% |
+| Neutral | ~3,300 | 33% |
+| Right | ~3,400 | 34% |
+
+---
+
+## 🚀 Quick Start
+
+### Run the Web Interface
 ```bash
+# Clone the repository
 git clone https://github.com/rajdeep547/political-bias-detector.git
 cd political-bias-detector
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the app
+python app.py
+
+# Open browser at: http://127.0.0.1:7860
